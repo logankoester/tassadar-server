@@ -1,6 +1,7 @@
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
 
 require 'tassadar-server'
+require 'rack/static'
 
 use Rack::Config do |env|
   env['api.tilt.root'] = File.join(
@@ -27,4 +28,11 @@ if ENV['THROTTLE']
     key_prefix: :throttle
 end
 
-run Tassadar::Server::API
+run Rack::Cascade.new [
+  Tassadar::Server::API,
+  Rack::Static.new(self,
+    urls: ['/'],
+    root: ::File.join(::File.dirname(__FILE__), 'public'),
+    index: 'index.html'
+  )
+]
