@@ -7,14 +7,22 @@ module Tassadar
       end
 
       def call(env)
-        if white_listed?(env)
-          @app.call(env)
+        if !!(content_type(env) =~ /json/)
+          if white_listed?(env)
+            @app.call(env)
+          else
+            [ 403,
+              { 'Content-Type' => 'text/plain; charset=utf-8' },
+              Array( "IP #{remote_ip(env)} is not whitelisted" )
+            ]
+          end
         else
-          [ 403,
-            { 'Content-Type' => 'text/plain; charset=utf-8' },
-            Array( "IP #{remote_ip(env)} is not whitelisted" )
-          ]
+          @app.call(env)
         end
+      end
+
+      def content_type(env)
+        Rack::Request.new(env).content_type
       end
 
       def remote_ip(env)
