@@ -17,6 +17,9 @@
   %body
     #header
       %nav
+        %li.consume
+          .span#mashape-button{:data => {:api => 'tassadar', :name => 'logankoester', :icon => '1'}}
+            %script{:src => 'https://www.mashape.com/embed/button.js'}
         %li.fork
           %a{:href => "https://github.com/logankoester/tassadar-server"} View On GitHub
         %li.downloads
