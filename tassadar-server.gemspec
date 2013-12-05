@@ -28,4 +28,13 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rack-test'
   gem.add_development_dependency 'json_spec'
   gem.add_development_dependency 'bump'
+  gem.add_development_dependency 'nanoc'
+  gem.add_development_dependency 'adsf'
+  gem.add_development_dependency 'haml'
+  gem.add_development_dependency 'nokogiri'
+  gem.add_development_dependency 'w3c_validators'
+  gem.add_development_dependency 'kramdown'
+  gem.add_development_dependency 'listen'
+  gem.add_development_dependency 'guard-nanoc'
+  gem.add_development_dependency 'coderay'
 end

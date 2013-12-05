@@ -32,7 +32,7 @@ run Rack::Cascade.new [
   Tassadar::Server::API,
   Rack::Static.new(self,
     urls: ['/'],
-    root: ::File.join(::File.dirname(__FILE__), 'public'),
+    root: ::File.join(::File.dirname(__FILE__), 'site/output'),
     index: 'index.html'
   )
 ]

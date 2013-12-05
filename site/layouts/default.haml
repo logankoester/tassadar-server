@@ -1,0 +1,42 @@
+!!! 5
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "nanoc #{Nanoc::VERSION}", :name => "generator"}
+    %title Tassadar - #{@item[:title]}
+    %link{:href => "stylesheets/styles.css", :rel => "stylesheet"}
+    %link{:href => "stylesheets/pygment_trac.css", :rel => "stylesheet"}
+    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"}
+    %script{:src => "javascripts/respond.js"}
+    /[if lt IE 9]
+      %script{:src => "//html5shiv.googlecode.com/svn/trunk/html5.js"}
+    /[if lt IE 8]
+      %link{:href => "stylesheets/ie.css", :rel => "stylesheet"}
+    %meta{:content => "width=device-width, initial-scale=1, user-scalable=no", :name => "viewport"}
+  %body
+    #header
+      %nav
+        %li.fork
+          %a{:href => "https://github.com/logankoester/tassadar-server"} View On GitHub
+        %li.downloads
+          %a{:href => "https://github.com/logankoester/tassadar-server/zipball/master"} ZIP
+        %li.downloads
+          %a{:href => "https://github.com/logankoester/tassadar-server/tarball/master"} TAR
+        %li.title DOWNLOADS
+    .wrapper
+      %section
+        #title
+          %h1 Tassadar
+          %p Hassle-free Starcraft II replay parsing
+          %hr/
+          %span.credits.left
+            Provided by
+            %a{:href => "http://ldk.io"} Logan Koester
+          %span.credits.right
+            Created at
+            %a{:href => "https://agoragames.com"} Agora Games
+        = yield
+    /[if !IE]
+      :javascript
+        fixScale(document);
